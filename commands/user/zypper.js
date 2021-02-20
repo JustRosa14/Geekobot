@@ -1,7 +1,7 @@
 exports.run = (client, message, args) => {
     const Discord = require(`discord.js`);
 
-const request = require('request-promise');
+const got = require('got');
 const cheerio = require('cheerio');
     
 
@@ -20,11 +20,12 @@ if (args[0].toLowerCase() == `info` || args[0].toLowerCase() == `if`){
         return message.channel.send(`No package name provided`).catch(console.error);
     }
     else {
-        const package = args[1]
 
-        request(`https://software.opensuse.org/package/${args[1].toLowerCase()}`, (error, response, html) => {
-            if(!error && response.statusCode == 200) {
-                const $ = cheerio.load(html);
+
+        (async () => {
+	        try {
+		        const response = await got(`https://software.opensuse.org/package/${args[1].toLowerCase()}`);
+                const $ = cheerio.load(response.body);
                 // Defining the HTML parent tags
                 const title = $('.col-md-6');
                 const error = $('.container');
@@ -38,17 +39,18 @@ if (args[0].toLowerCase() == `info` || args[0].toLowerCase() == `if`){
                 else {
                     const pkgembed = new Discord.MessageEmbed()
                     .setAuthor(`openSUSE Package Search`, `https://en.opensuse.org/images/c/cd/Button-colour.png`)
-                    .setTitle(`${args[1]}`)
+                    .setTitle(`${output}`)
                     .setURL(`https://software.opensuse.org/package/${args[1].toLowerCase()}`)
                     .setDescription(`**Name:** ${output}\n **Description:** ${output2}`)
                     .setImage(`https://software.opensuse.org/images/thumbnails/${args[1]}.png`)
                     .setColor(`#81c13b`)
                     .setFooter(`openSUSE®`, `https://en.opensuse.org/images/c/cd/Button-colour.png`)
-                    return message.channel.send(pkgembed).catch(console.error);
-                };
-                
-            }
-        });
+                    return message.channel.send(pkgembed).catch(console.error);}
+
+	        } catch (error) {
+		        console.log('error:', error);
+	        }
+        })();
     }
 }
 
