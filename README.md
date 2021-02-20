@@ -12,7 +12,7 @@ This bot provides information on things like:
 This bot was created by Smeltie for the purpose of education and supporting the openSUSE project.
 OpenSource projects used:
 
-[Command Handler](https://github.com/AnIdiotsGuide/discordjs-bot-guide)
-[Discord.js](https://discord.js.org)
-[Cheerio](https://www.npmjs.com/package/cheerio)
-[Got](https://www.npmjs.com/package/got)
+[Command Handler](https://github.com/AnIdiotsGuide/discordjs-bot-guide)  
+[Discord.js](https://discord.js.org)  
+[Cheerio](https://www.npmjs.com/package/cheerio)  
+[Got](https://www.npmjs.com/package/got)  
