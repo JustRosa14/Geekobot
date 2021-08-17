@@ -7,7 +7,7 @@ This bot provides information on things like:
 - Versions
 - Packages
 - Desktop Enviroments
-- More to come
+- More to come (sike not really)
 
 This bot was created by Smeltie for the purpose of education and supporting the openSUSE project.
 OpenSource projects used:
