@@ -31,17 +31,6 @@ exports.run = (client, message, args) => {
 
                     else { return message.channel.send(`yay`) }
 
-                    // If the pckage was found (aka fail remained empty) it makes an embed based on available data.
-                    // else {
-                    //     const pkgs = new Discord.MessageEmbed()
-                    //     .setAuthor(`Available openSUSE Packages`, `https://en.opensuse.org/images/c/cd/Button-colour.png`)
-                    //     .setTitle(`${output}`)
-                    //     .setURL(`https://software.opensuse.org/search?utf8=%E2%9C%93&baseproject=ALL&q=${args[1].toLowerCase()}`)
-                    //     .setDescription(`**Name:** ${output}\n **Description:** ${output2}`)
-                    //     .setColor(`#81c13b`)
-                    //     .setFooter(`openSUSE®`, `https://en.opensuse.org/images/c/cd/Button-colour.png`)
-                    //     return message.channel.send(pkgs).catch(console.error);}
-
                 } catch (error) {
                     console.log('error:', error);
                 }
