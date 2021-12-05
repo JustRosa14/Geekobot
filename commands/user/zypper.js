@@ -19,11 +19,8 @@ exports.run = (client, message, args) => {
                     const response = await got(`https://software.opensuse.org/search?utf8=%E2%9C%93&baseproject=ALL&q=${args[1].toLowerCase()}`);
                     const $ = cheerio.load(response.body);
                     // Defining the HTML parent tags
-                    //const title = $('.col-md-6');
                     const error = $('#msg');
                     // Finding the desired HTML content based on the tag
-                    //const output = title.find('h1').text();
-                    //const output2 = title.find('strong').text();
                     const fail = error.text();
                     // If the const fail is met and contains not found... it means the package was not found
                     if (fail.includes(`No packages found matching your search`)) { return message.channel.send(`invalid package`) }
